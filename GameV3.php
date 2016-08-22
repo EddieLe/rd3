@@ -68,6 +68,6 @@ class Game
     return $re;
     }
 }
-$g = new Game();
-$re = $g->create();
-echo $re;
+// $g = new Game();
+// $re = $g->create();
+// echo $re;
