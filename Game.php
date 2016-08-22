@@ -22,8 +22,6 @@ class Game
             }
         }
 
-        // var_dump($this->result);
-
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 if ($this->result[$i][$j] == "M") {
@@ -62,13 +60,13 @@ class Game
 
         }
 
-        for ($j = 0 ; $j < 10; $j++) {
-            echo "<tr>";
-            for ($i = 0 ; $i < 10; $i++) {
-                echo "<td>".$this->result[$j][$i]."</td>";
-            }
-            echo "</tr>";
-        }
+        // for ($j = 0 ; $j < 10; $j++) {
+        //     echo "<tr>";
+        //     for ($i = 0 ; $i < 10; $i++) {
+        //         echo "<td>".$this->result[$j][$i]."</td>";
+        //     }
+        //     echo "</tr>";
+        // }
 
         for ($j = 0 ; $j < 10; $j++) {
             for ($i = 0 ; $i <= 10; $i++) {
@@ -84,6 +82,6 @@ class Game
     }
 }
 $g = new Game();
-echo ' <table width="300" border="1"> ';
+// echo ' <table width="300" border="1"> ';
 $g->create();
-echo ' </table> ';
+// echo ' </table> ';
