@@ -6,8 +6,6 @@ class Game
 
     function create()
     {
-        $count = 0;
-
         for ($i = 0; $i < 100; $i++) {
             $rand[] = $i + 1;
         }
@@ -25,7 +23,7 @@ class Game
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
                 if ($this->result[$i][$j] == "M") {
-                    $this->result[$i][$j] = "M";
+                    continue;
                 } else {
 
                     if ($this->result[$i-1][$j-1] == "M") {
@@ -57,16 +55,7 @@ class Game
                 $this->countt = 0;
                 }
             }
-
         }
-
-        // for ($j = 0 ; $j < 10; $j++) {
-        //     echo "<tr>";
-        //     for ($i = 0 ; $i < 10; $i++) {
-        //         echo "<td>".$this->result[$j][$i]."</td>";
-        //     }
-        //     echo "</tr>";
-        // }
 
         for ($j = 0 ; $j < 10; $j++) {
             for ($i = 0 ; $i <= 10; $i++) {
@@ -77,11 +66,7 @@ class Game
             }
 
         }
-
-
     }
 }
 $g = new Game();
-// echo ' <table width="300" border="1"> ';
 $g->create();
-// echo ' </table> ';
