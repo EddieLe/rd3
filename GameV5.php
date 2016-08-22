@@ -22,32 +22,32 @@ class Game
 
         for ($i = 0; $i < 10; $i++) {
             for ($j = 0; $j < 10; $j++) {
-                if ($this->result[$i][$j] == "M") {
+                if ($this->result[$i][$j] === "M") {
                     continue;
                 } else {
 
-                    if ($this->result[$i-1][$j-1] == "M") {
+                    if ($this->result[$i-1][$j-1] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i-1][$j] == "M") {
+                    if ($this->result[$i-1][$j] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i-1][$j+1] == "M") {
+                    if ($this->result[$i-1][$j+1] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i][$j-1] == "M") {
+                    if ($this->result[$i][$j-1] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i][$j+1] == "M") {
+                    if ($this->result[$i][$j+1] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i+1][$j-1] == "M") {
+                    if ($this->result[$i+1][$j-1] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i+1][$j] == "M") {
+                    if ($this->result[$i+1][$j] === "M") {
                         $this->countt ++;
                     }
-                    if ($this->result[$i+1][$j+1] == "M") {
+                    if ($this->result[$i+1][$j+1] === "M") {
                         $this->countt ++;
                     }
 
@@ -56,6 +56,13 @@ class Game
                 }
             }
         }
+        // for ($j = 0 ; $j < 10; $j++) {
+        //     echo "<tr>";
+        //     for ($i = 0 ; $i < 10; $i++) {
+        //         echo "<td>" . $this->result[$j][$i] . "</td>";
+        //     }
+        //     echo "</tr>";
+        // }
 
         for ($j = 0 ; $j < 10; $j++) {
             for ($i = 0 ; $i <= 10; $i++) {
@@ -65,9 +72,14 @@ class Game
                 $re .= "N";
             }
         }
-    return $re;
+    echo $re;
     }
 }
+
+$g = new Game();
+// echo ' <table width="300" border="1"> ';
+$g->create();
+// echo ' </table> ';
 // $g = new Game();
 // $re = $g->create();
 // echo $re;
