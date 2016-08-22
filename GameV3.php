@@ -59,14 +59,15 @@ class Game
 
         for ($j = 0 ; $j < 10; $j++) {
             for ($i = 0 ; $i <= 10; $i++) {
-                if ($i == 10 && $j != 9) {
-                    echo "N";
-                }
-                echo $this->result[$j][$i];
+                $re .= $this->result[$j][$i];
             }
-
+            if ($j != 9) {
+                $re .= "N";
+            }
         }
+    return $re;
     }
 }
 $g = new Game();
-$g->create();
+$re = $g->create();
+echo $re;
