@@ -6,15 +6,24 @@ class Verify
 
     function verify()
     {
-        $ch = curl_init();
+        // $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
-        curl_setopt($ch,CURLOPT_HEADER,0);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        // curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
+        // curl_setopt($ch,CURLOPT_HEADER,0);
+        // curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 
         // $result = curl_exec($ch);
         // echo $result . '<br>';
         $result = $_GET['map'];
+        if (!preg_match('/^[A-Z0-9]+$/', $result)) {
+            echo '不符合,因為輸入只能為數字大寫英文組合' . '<br>';
+            $this->error ++;
+        }
+
+        if (!is_string($result)) {
+            echo '不符合,因為輸入不為字串';
+            $this->error ++;
+        }
 
         if (substr_count($result,'M') != 40 ) {
             $total = substr_count($result,'M');
@@ -27,6 +36,7 @@ class Verify
                 $this->error ++;
             }
         }
+
         if (strlen($result) != 109) {
             echo '不符合,因為數量不對' . '<br>';
             $this->error ++;
