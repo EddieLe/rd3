@@ -66,7 +66,7 @@ class Verify
 
             if (strlen($rowArray[$i]) != 10) {
                 $length = strlen($rowArray[$i]);
-                echo '不符合,因為第' . $i . '行長度為' . $length;
+                echo '不符合,因為第' . $i . '行長度為' . $length . '\n';
                 $this->error ++;
             }
         }
