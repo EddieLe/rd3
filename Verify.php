@@ -6,17 +6,17 @@ class Verify
 
     function verify()
     {
-        // $ch = curl_init();
+        $ch = curl_init();
 
-        // curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
-        // curl_setopt($ch,CURLOPT_HEADER,0);
-        // curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 
         // $result = curl_exec($ch);
         // echo $result . '<br>';
         $result = $_GET['map'];
-        if (!preg_match('/^[A-Z0-9]+$/', $result)) {
-            echo '不符合,因為輸入只能為數字大寫英文組合' . '<br>';
+        if (!preg_match('/^[NM0-8]+$/', $result)) {
+            echo '不符合,因為輸入只能為數字0~8大寫英文NM組合' . '<br>';
             $this->error ++;
         }
 
