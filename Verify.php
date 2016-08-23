@@ -18,47 +18,47 @@ class Verify
         //     '4M4M211111N24MM22M33MN1MM533M3MMN235MM2234MN2M4M433M31N3M65M5MM41N3MMMMMMM4MNM6M5M55M42NMM4333M3M1N3M3M2M2214',
         //     '2M4M4MM311NM4MMM7M5M3NM324MMM5MMN22124MM56MN1M22M44MMMN123M33M34MN01M3M43333N01122MM3MMN0011334M4MN222M2M3221NMM2122M100'
         //     );
-        // $result = $aCheckMap[0];
+        // $result = $aCheckMap[9];
         $result = $_GET['map'];
         if (!preg_match('/^[NM0-8]+$/', $result)) {
-            echo '不符合,因為輸入只能為數字0~8大寫英文NM組合';
+            echo '不符合,因為輸入只能為數字0~8大寫英文NM組合' . '\n';
             $this->error ++;
         }
 
         if (strpos($result, 'm')) {
             $TryStrpos=strpos($result, 'm');
-            echo '不符合,因為 m 因該為大寫才可判斷為地雷輸入有誤';
+            echo '不符合,因為 m 因該為大寫才可' . '\n';
         }
 
         if (strpos($result, 'n')) {
             $TryStrpos=strpos($result, 'n');
-            echo '不符合,因為 n 因該為大寫才可判斷為換行輸入有誤';
+            echo '不符合,因為 n 因該為大寫才可' . '\n';
         }
 
         if (!is_string($result)) {
-            echo '不符合,因為輸入不為字串';
+            echo '不符合,因為輸入不為字串' . '\n';
             $this->error ++;
         }
 
-        if (substr_count($result,'M') != 40 ) {
-            $total = substr_count($result,'M');
+        if (substr_count($result,'M')  + substr_count($result,'m') != 40 ) {
+            $total = substr_count($result,'M') + substr_count($result,'m');
 
-            if (substr_count($result,'M') < 40) {
-                echo '不符合,因為地雷小於40 只有' . $total;
+            if (substr_count($result,'M')  + substr_count($result,'m') < 40) {
+                echo '不符合,因為地雷小於40 只有' . $total . '\n';
                 $this->error ++;
             } else {
-                echo '不符合,因為地雷大於40 地雷有' . $total;
+                echo '不符合,因為地雷大於40 地雷有' . $total . '\n';
                 $this->error ++;
             }
         }
 
         if (strlen($result) != 109) {
-            echo '不符合,因為輸入數量不對你的字串長度為' . strlen($result);
+            echo '不符合,因為輸入數量不對你的字串長度為' . strlen($result) . '\n';
             $this->error ++;
         }
 
-        if (substr($result, -1) == 'N') {
-            echo '不符合,因為最後不需 +N 換行';
+        if (substr($result, -1) == 'N' || substr($result, -1) == 'n') {
+            echo '不符合,因為最後不需 +N 換行' . '\n';
         }
 
         $rowArray = explode('N', $result);
@@ -73,44 +73,51 @@ class Verify
         $removeResult = str_replace('N', '', $result);
         $onlyArray = preg_split('//', $removeResult, -1, PREG_SPLIT_NO_EMPTY);
 
-        for ($i = 0; $i < 10; $i++) {
+        //移除空陣列 以防N在最後
+        $rowArray = array_filter($rowArray);
+
+        if (count($rowArray) != 10) {
+            echo '不符合,因為不為10*10 為10*' . count($rowArray) . '\n';
+        }
+
+        for ($i = 0; $i < count($rowArray); $i++) {
             for ($j = 0; $j < 10; $j++) {
                 $inputArray[$i][$j] = $onlyArray[$i * 10 + $j];
             }
         }
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < count($rowArray); $i++) {
             for ($j = 0; $j < 10; $j++) {
-                if ($inputArray[$i][$j] === "M") {
+                if ($inputArray[$i][$j] === "M" || $inputArray[$i][$j] === "m") {
                     continue;
                 } else {
 
-                    if ($inputArray[$i-1][$j-1] === "M") {
+                    if ($inputArray[$i-1][$j-1] === "M" || $inputArray[$i-1][$j-1] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i-1][$j] === "M") {
+                    if ($inputArray[$i-1][$j] === "M" || $inputArray[$i-1][$j] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i-1][$j+1] === "M") {
+                    if ($inputArray[$i-1][$j+1] === "M" || $inputArray[$i-1][$j+1] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i][$j-1] === "M") {
+                    if ($inputArray[$i][$j-1] === "M" || $inputArray[$i][$j-1] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i][$j+1] === "M") {
+                    if ($inputArray[$i][$j+1] === "M" || $inputArray[$i][$j+1] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i+1][$j-1] === "M") {
+                    if ($inputArray[$i+1][$j-1] === "M" || $inputArray[$i+1][$j-1] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i+1][$j] === "M") {
+                    if ($inputArray[$i+1][$j] === "M" || $inputArray[$i+1][$j] === "m") {
                         $this->countt ++;
                     }
-                    if ($inputArray[$i+1][$j+1] === "M") {
+                    if ($inputArray[$i+1][$j+1] === "M" || $inputArray[$i+1][$j+1] === "m") {
                         $this->countt ++;
                     }
                     if ($inputArray[$i][$j] != $this->countt) {
-                        echo '不符合,座標(' . $i . ',' . $j . ')' . '因該是' . $this->countt  .'不是' . $inputArray[$i][$j];
+                        echo '不符合,座標(' . $i . ',' . $j . ')' . '因該是' . $this->countt  .'不是' . $inputArray[$i][$j] . '\n';
                         $this->error ++;
                     }
                 $this->countt = 0;
