@@ -6,11 +6,11 @@ class Verify
 
     function verify()
     {
-        $ch = curl_init();
+        // $ch = curl_init();
 
-        curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
-        curl_setopt($ch,CURLOPT_HEADER,0);
-        curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
+        // curl_setopt($ch,CURLOPT_URL,"https://eddie-eddie-lee.c9users.io/Game.php");
+        // curl_setopt($ch,CURLOPT_HEADER,0);
+        // curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);
 
         // $result = curl_exec($ch);
         // echo $result . '<br>';
