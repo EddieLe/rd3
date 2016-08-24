@@ -18,7 +18,7 @@ class Verify
         //     '4M4M211111N24MM22M33MN1MM533M3MMN235MM2234MN2M4M433M31N3M65M5MM41N3MMMMMMM4MNM6M5M55M42NMM4333M3M1N3M3M2M2214',
         //     '2M4M4MM311NM4MMM7M5M3NM324MMM5MMN22124MM56MN1M22M44MMMN123M33M34MN01M3M43333N01122MM3MMN0011334M4MN222M2M3221NMM2122M100'
         //     );
-        // $result = $aCheckMap[9];
+        // $result = $aCheckMap[6];
         $result = $_GET['map'];
         if (!preg_match('/^[NM0-8]+$/', $result)) {
             echo '不符合,因為輸入只能為數字0~8大寫英文NM組合' . '\n';
