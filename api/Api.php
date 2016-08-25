@@ -52,6 +52,14 @@ class Api
             echo json_encode($respose);
             exit;
         }
+        if ($_GET['amount'] < 0) {
+            $respose = [
+                'result' => 'false',
+                'data' => ['Message' => 'amount < 0']
+            ];
+            echo json_encode($respose);
+            exit;
+        }
 
         if ( $_GET['type'] != 'IN' && $_GET['type'] != 'OUT') {
             $respose = [
