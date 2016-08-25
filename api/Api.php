@@ -61,6 +61,7 @@ class Api
         $stmt->execute([':transid' => $_GET['transid']]);
         $row = $stmt->fetchall(PDO::FETCH_ASSOC);
 
+        //判斷入款帳號有無重複
         if (count($row) > 0) {
             $respose = [
                 'result' => 'false',
@@ -70,7 +71,22 @@ class Api
             exit;
         }
 
-        $sql = "UPDATE `api` SET `username`=:username,`transid`=:transid,`amount`=:amount,`type`=:type WHERE `username`=:username";
+        $sql = "SELECT * FROM `accounts` WHERE `username`=:username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':username' => $_GET['username']]);
+        $row = $stmt->fetchall(PDO::FETCH_ASSOC);
+
+        //判斷帳號有無
+        if (count($row) == 0 ) {
+            $respose = [
+                'result' => 'false',
+                'data' => ['Message' => 'Not Found Account']
+            ];
+            echo json_encode($respose);
+            exit;
+        }
+
+        $sql = "INSERT INTO `api` (`username`, `transid`, `amount`, `type`) VALUES (:username, :transid, :amount, :type)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':username' => $_GET['username'],
@@ -78,6 +94,16 @@ class Api
             ':amount' => $_GET['amount'],
             ':type' => $_GET['type']
             ]);
+
+        if ($_GET['type'] == 'IN') {
+            $sql = "UPDATE `accounts` SET `total` = `total` + :amount WHERE `username`=:username";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':amount' => $_GET['amount'], ':username' => $_GET['username']]);
+        } else {
+            $sql = "UPDATE `accounts` SET `total` = `total` - :amount WHERE `username`=:username";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([':amount' => $_GET['amount'], ':username' => $_GET['username']]);
+        }
 
         if ($stmt->rowCount() > 0) {
             $respose = [
