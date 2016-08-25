@@ -12,3 +12,16 @@
 [25-Aug-2016 06:17:48 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
 [25-Aug-2016 06:17:48 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
 [25-Aug-2016 06:17:48 UTC] PHP   4. Api->create() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 06:54:41 UTC] PHP Fatal error:  Call to undefined function rowCount() in /home/ubuntu/workspace/rd3/api/Api.php on line 49
+[25-Aug-2016 06:54:41 UTC] PHP Stack trace:
+[25-Aug-2016 06:54:41 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[25-Aug-2016 06:54:41 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[25-Aug-2016 06:54:41 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 06:54:41 UTC] PHP   4. Api->transfer() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 07:06:21 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/ubuntu/workspace/rd3/api/Api.php on line 55
+[25-Aug-2016 07:06:21 UTC] PHP Stack trace:
+[25-Aug-2016 07:06:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[25-Aug-2016 07:06:21 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[25-Aug-2016 07:06:21 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 07:06:21 UTC] PHP   4. Api->transfer() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 07:06:21 UTC] PHP   5. PDOStatement->execute() /home/ubuntu/workspace/rd3/api/Api.php:55
