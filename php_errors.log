@@ -1,0 +1,14 @@
+[25-Aug-2016 06:13:47 UTC] PHP Warning:  require_once(controllers/Controller.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/rd3/api/App.php on line 11
+[25-Aug-2016 06:13:47 UTC] PHP Stack trace:
+[25-Aug-2016 06:13:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[25-Aug-2016 06:13:47 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[25-Aug-2016 06:13:47 UTC] PHP Fatal error:  require_once(): Failed opening required 'controllers/Controller.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/rd3/api/App.php on line 11
+[25-Aug-2016 06:13:47 UTC] PHP Stack trace:
+[25-Aug-2016 06:13:47 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[25-Aug-2016 06:13:47 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[25-Aug-2016 06:17:48 UTC] PHP Fatal error:  Call to a member function prepare() on a non-object in /home/ubuntu/workspace/rd3/api/Api.php on line 10
+[25-Aug-2016 06:17:48 UTC] PHP Stack trace:
+[25-Aug-2016 06:17:48 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[25-Aug-2016 06:17:48 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[25-Aug-2016 06:17:48 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
+[25-Aug-2016 06:17:48 UTC] PHP   4. Api->create() /home/ubuntu/workspace/rd3/api/App.php:15
