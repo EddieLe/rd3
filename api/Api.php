@@ -5,6 +5,17 @@ class Api
 {
     function create()
     {
+        $compaison = md5($_GET['username'] . date("Y/m/d"));
+        $result = substr($_GET['key'], -33, -1);
+        if ($compaison != $result) {
+            $respose = [
+                'result' => 'false',
+                'data' => ['Message' => 'Key Error']
+            ];
+            echo json_encode($respose);
+            exit;
+        }
+
         $mypdo = new MyPDO();
         $pdo = $mypdo->pdoConnect;
         $sql = "SELECT * FROM `accounts` WHERE `username` = :username";
@@ -14,9 +25,6 @@ class Api
 
         if (count($row) == 0) {
             $sql = "INSERT INTO `accounts`(`username`, `total`) VALUES (:username, 100000)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([':username' => $_GET['username']]);
-            $sql = "INSERT INTO `api`(`username`) VALUES (:username)";
             $stmt = $pdo->prepare($sql);
             $stmt->execute([':username' => $_GET['username']]);
 
@@ -132,7 +140,7 @@ class Api
         if (count($row) > 0) {
             $respose = [
                 'result' => 'true',
-                'data' => $row[0]['total']
+                'data' => ['Money' => $row[0]['total']]
             ];
         } else {
             $respose = [
@@ -145,7 +153,23 @@ class Api
 
     function checkTransfer()
     {
-
+        $mypdo = new MyPDO();
+        $pdo = $mypdo->pdoConnect;
+        $sql = "SELECT * FROM `api` WHERE `username`=:username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':username' => $_GET['username']]);
+        $row = $stmt->fetchall(PDO::FETCH_ASSOC);
+        if (count($row) > 0) {
+            $respose = [
+                'result' => 'true',
+                'data' => $row
+            ];
+        } else {
+            $respose = [
+                'result' => 'false',
+                'data' => ['Message' => 'Not Found']
+            ];
+        }
+    echo json_encode($respose);
     }
 }
-?>

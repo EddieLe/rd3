@@ -1,0 +1,41 @@
+https://eddie-eddie-lee.c9users.io/rd3/api/Api/api嘿?把计=
+
+1.穝糤眀腹
+
+api嘿 - addUser
+
+把计1 - username(眀腹)
+
+把计2 -key md5(ヴ絏+眀腹+GMT(2016/08/25)+ヴ絏)
+
+
+2.眔緇肂
+
+api嘿 - getUserBalance
+
+把计1 - username(眀腹)
+
+
+3.锣眀
+
+api嘿 - transfer
+
+把计1 - username(眀腹)
+
+把计2 - transid(锣眀腹)
+
+把计3 - type(锣眀篈) (IN,OUT)
+
+把计4 - amount(锣眀肂)
+
+4.锣眀絋粄
+
+api嘿 - checkTransfer
+
+把计1 - username(眀腹)
+
+絛ㄒ:
+https://eddie-eddie-lee.c9users.io/rd3/api/Api/create?username=Wg&key=
+https://eddie-eddie-lee.c9users.io/rd3/api/Api/getUserBalance?username=Wg
+https://eddie-eddie-lee.c9users.io/rd3/api/Api/transfer?username=Wg&transid=222&amount=1000&type=IN
+https://eddie-eddie-lee.c9users.io/rd3/api/Api/checkTransfer?username=Wg
