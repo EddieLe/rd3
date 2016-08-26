@@ -30,3 +30,10 @@
 [25-Aug-2016 08:21:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
 [25-Aug-2016 08:21:37 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
 [25-Aug-2016 08:21:37 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
+[26-Aug-2016 01:32:26 UTC] PHP Warning:  PDOStatement::execute(): SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens in /home/ubuntu/workspace/rd3/api/Api.php on line 168
+[26-Aug-2016 01:32:26 UTC] PHP Stack trace:
+[26-Aug-2016 01:32:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/rd3/api/index.php:0
+[26-Aug-2016 01:32:26 UTC] PHP   2. App->__construct() /home/ubuntu/workspace/rd3/api/index.php:4
+[26-Aug-2016 01:32:26 UTC] PHP   3. call_user_func_array:{/home/ubuntu/workspace/rd3/api/App.php:15}() /home/ubuntu/workspace/rd3/api/App.php:15
+[26-Aug-2016 01:32:26 UTC] PHP   4. Api->checkTransfer() /home/ubuntu/workspace/rd3/api/App.php:15
+[26-Aug-2016 01:32:26 UTC] PHP   5. PDOStatement->execute() /home/ubuntu/workspace/rd3/api/Api.php:168

@@ -161,12 +161,21 @@ class Api
 
     function checkTransfer()
     {
+        if ($_GET['username'] == null || $_GET['count'] == null) {
+            $respose = [
+                'result' => 'false',
+                'data' => ['Message' => 'Lost Parameter']
+            ];
+            echo json_encode($respose);
+            exit;
+        }
         $mypdo = new MyPDO();
         $pdo = $mypdo->pdoConnect;
-        $sql = "SELECT * FROM `api` WHERE `username`=:username LIMIT 0 , :count";
+        $sql = "SELECT * FROM `api` WHERE `username`=:username LIMIT 0 , $_GET[count]";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':username' => $_GET['username'], ':count' => $GET['count']]);
+        $stmt->execute([':username' => $_GET['username']]);
         $row = $stmt->fetchall(PDO::FETCH_ASSOC);
+
         if (count($row) > 0) {
             $respose = [
                 'result' => 'true',
