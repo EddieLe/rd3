@@ -163,9 +163,9 @@ class Api
     {
         $mypdo = new MyPDO();
         $pdo = $mypdo->pdoConnect;
-        $sql = "SELECT * FROM `api` WHERE `username`=:username";
+        $sql = "SELECT * FROM `api` WHERE `username`=:username LIMIT 0 , :count";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':username' => $_GET['username']]);
+        $stmt->execute([':username' => $_GET['username'], ':count' => $GET['count']]);
         $row = $stmt->fetchall(PDO::FETCH_ASSOC);
         if (count($row) > 0) {
             $respose = [
